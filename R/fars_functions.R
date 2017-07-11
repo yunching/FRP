@@ -84,7 +84,7 @@ fars_summarize_years <- function(years) {
 #' @importFrom maps map
 #' @details This function will also not plot accidents where their longitudes are more than 900 or latitudes are more than 90.
 #'
-#' @examples fars_map_state(50, 2012)
+#' \dontrun{ @examples fars_map_state(50, 2012) }
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)

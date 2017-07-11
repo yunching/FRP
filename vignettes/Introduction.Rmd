@@ -9,7 +9,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This package contains a number of functions to analyse FARS data.
+This package contains a number of functions to analyse FARS data,US National Highway Traffic Safety Administration's Fatality Analysis Reporting System. It is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes.
+
+## Details
+
+See https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars for more details.
 
 Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
 
