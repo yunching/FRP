@@ -6,7 +6,10 @@
 #'
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
-#' @examples fars_read("dummy.csv")
+#' @examples
+#' \donttest{
+#' fars_read("dummy.csv")
+#' }
 fars_read <- function(filename) {
   if(!file.exists(filename))
     stop("file '", filename, "' does not exist")
@@ -84,7 +87,10 @@ fars_summarize_years <- function(years) {
 #' @importFrom maps map
 #' @details This function will also not plot accidents where their longitudes are more than 900 or latitudes are more than 90.
 #'
-#' @examples \dontrun{fars_map_state(50, 2012) }
+#' @examples
+#' \donttest{
+#' fars_map_state(50, 2012)
+#' }
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)
@@ -92,7 +98,7 @@ fars_map_state <- function(state.num, year) {
 
   if(!(state.num %in% unique(data$STATE)))
     stop("invalid STATE number: ", state.num)
-  data.sub <- dplyr::filter(data, STATE == state.num)
+  data.sub <- dplyr::filter_(data, STATE == ~state.num)
   if(nrow(data.sub) == 0L) {
     message("no accidents to plot")
     return(invisible(NULL))

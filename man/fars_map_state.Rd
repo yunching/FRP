@@ -21,5 +21,7 @@ Plots accidents for a given state and year
 This function will also not plot accidents where their longitudes are more than 900 or latitudes are more than 90.
 }
 \examples{
+\donttest{
 fars_map_state(50, 2012)
+}
 }
