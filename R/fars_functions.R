@@ -27,6 +27,7 @@ fars_read <- function(filename) {
 #' @return A character string for the filename containing the year provided.
 #'
 #' @examples make_filename(2012)
+#' @export
 make_filename <- function(year) {
   year <- as.integer(year)
   sprintf("accident_%d.csv.bz2", year)
@@ -38,7 +39,7 @@ make_filename <- function(year) {
 #'
 #' @return a dataframe containing month and year of data
 #' @export
-#' @importFrom dplyr mutate select
+#' @importFrom dplyr mutate_ select_
 #' @importFrom magrittr %>%
 #' @details This function fails if any single year provided is missing from the data.
 #'
@@ -48,8 +49,8 @@ fars_read_years <- function(years) {
     file <- make_filename(year)
     tryCatch({
       dat <- fars_read(file)
-      dplyr::mutate(dat, year = year) %>%
-        dplyr::select(MONTH, year)
+      dplyr::mutate_(dat, year = ~year) %>%
+        dplyr::select_(~MONTH, ~year)
     }, error = function(e) {
       warning("invalid year: ", year)
       return(NULL)
@@ -102,7 +103,7 @@ fars_map_state <- function(state.num, year) {
 
   if(!(state.num %in% unique(data$STATE)))
     stop("invalid STATE number: ", state.num)
-  data.sub <- dplyr::filter_(data, STATE == ~state.num)
+  data.sub <- dplyr::filter_(data, ~STATE == ~state.num)
   if(nrow(data.sub) == 0L) {
     message("no accidents to plot")
     return(invisible(NULL))

@@ -16,5 +16,7 @@ A data frame containing the year, month and count of data in each corresponding 
 Summarise FARS data by year and month
 }
 \examples{
-fars_summarize_years(c(2012, 2013))
+\donttest{
+test <- fars_summarize_years(2013)
+}
 }
