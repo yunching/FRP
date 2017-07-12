@@ -16,5 +16,7 @@ A data frame containing data loaded from indicated filename.
 Read FARS data from single file
 }
 \examples{
+\dontrun{
 fars_read("dummy.csv")
+}
 }

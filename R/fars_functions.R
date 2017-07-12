@@ -6,8 +6,9 @@
 #'
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
+#' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' fars_read("dummy.csv")
 #' }
 fars_read <- function(filename) {
@@ -61,18 +62,21 @@ fars_read_years <- function(years) {
 #' @inheritParams fars_read_years
 #'
 #' @return A data frame containing the year, month and count of data in each corresponding year/month
-#' @export
-#' @importFrom dplyr bind_rows group_by summarize
-#' @importFrom tidyr spread
+#' @importFrom dplyr bind_rows group_by_ summarize_
+#' @importFrom tidyr spread_
 #' @importFrom magrittr %>%
+#' @export
 #'
-#' @examples fars_summarize_years(c(2012, 2013))
+#' @examples
+#' \donttest{
+#' test <- fars_summarize_years(2013)
+#' }
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
-    dplyr::group_by(year, MONTH) %>%
-    dplyr::summarize(n = n()) %>%
-    tidyr::spread(year, n)
+    dplyr::group_by_(~year, ~MONTH) %>%
+    dplyr::summarize_(n = ~n()) %>%
+    tidyr::spread_(~year, ~n)
 }
 
 #' Plots accidents for a given state and year
@@ -81,14 +85,14 @@ fars_summarize_years <- function(years) {
 #' @param year Accident year for plot
 #'
 #' @return Nothing returned, produces a side effect of a plot of given US state and location of accident(s) for given year
-#' @export
-#' @importFrom dplyr filter
+#' @importFrom dplyr filter_
 #' @importFrom graphics points
 #' @importFrom maps map
 #' @details This function will also not plot accidents where their longitudes are more than 900 or latitudes are more than 90.
+#' @export
 #'
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' fars_map_state(50, 2012)
 #' }
 fars_map_state <- function(state.num, year) {
