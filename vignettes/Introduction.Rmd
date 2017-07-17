@@ -9,7 +9,30 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-This package contains a number of functions to analyse FARS data,US National Highway Traffic Safety Administration's Fatality Analysis Reporting System. It is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes.
+This package contains a number of functions to analyse US National Highway Traffic Safety Administration's Fatality Analysis Reporting System (FARS) data. It is a nationwide census providing the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes.
+
+This package makes it easy to read, summarise and plot the above data.
+
+### Reading
+
+```{reading}
+#Reads data for years 2012 and 2013
+fars_read_years(c(2012, 2013))
+```
+
+### Summarising
+
+```{summarising}
+#Summarise FARS data by year and month
+fars_summarize_years(2013)
+```
+
+### Plotting
+
+```{plotting}
+#Plots accidents for a given state and year
+fars_map_state(50, 2012)
+```
 
 ## Details
 

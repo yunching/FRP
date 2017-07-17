@@ -6,7 +6,6 @@
 #'
 #' @importFrom readr read_csv
 #' @importFrom dplyr tbl_df
-#' @export
 #' @examples
 #' \dontrun{
 #' fars_read("dummy.csv")
@@ -27,7 +26,6 @@ fars_read <- function(filename) {
 #' @return A character string for the filename containing the year provided.
 #'
 #' @examples make_filename(2012)
-#' @export
 make_filename <- function(year) {
   year <- as.integer(year)
   sprintf("accident_%d.csv.bz2", year)
