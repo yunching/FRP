@@ -1,5 +1,5 @@
 # FRP
-https://travis-ci.org/yunching/FRP.svg?branch=master
+![travis badge](https://travis-ci.org/yunching/FRP.svg?branch=master)
 
 The goal of FRP is to demonstrate R package making proficiency.
 
